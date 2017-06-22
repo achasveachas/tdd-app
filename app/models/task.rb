@@ -3,6 +3,7 @@ class Task
 
   def initialize(options = {})
     mark_completed = options[:completed_at] if options[:completed_at]
+    self.mark_completed if options[:completed]
     @size = options[:size]
   end
 
