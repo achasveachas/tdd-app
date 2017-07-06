@@ -41,6 +41,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   # using rspec for testing
   gem 'rspec-rails', '~> 3.1'
+  # using pry for debugging
+  gem 'pry'
 end
 
 group :development do
