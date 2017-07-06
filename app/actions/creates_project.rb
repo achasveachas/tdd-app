@@ -8,18 +8,21 @@ class CreatesProject
 
   def build
     self.project = Project.new(name: name)
+    project.tasks = convert_string_to_tasks
+    project
+  end
+
+  def create
+    build
+    project.save
   end
 
   def convert_string_to_tasks
-    tasks = []
-    task_strings = task_string.split("\n")
-    task_strings.each do |task_string|
-      task = task_string.split(":")
-      title = task[0]
-      size = task[1] || 1
-      tasks << Task.new(title: title, size: size.to_i) if title
+    task_string.split("\n").map do |task_string|
+      title, size = task_string.split(":")
+      size = 1 if size.blank? || size.to_i == 0
+      Task.new(title: title, size: size) if title
     end
-    tasks
   end
 
 end
