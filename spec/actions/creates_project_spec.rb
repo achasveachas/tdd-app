@@ -30,4 +30,12 @@ describe "task string parsing" do
     expect(tasks.map(&:title)).to eq(["Start Things"])
     expect(tasks.map(&:size)).to eq([3])
   end
+
+  it "handles multiple tasks" do
+    creator = CreatesProject.new(name: "Project Runway", task_string: "Start Things:3\nEnd Things:2")
+    tasks = creator.convert_string_to_tasks
+    expect(tasks.size).to eq(2)
+    expect(tasks.map(&:title)).to eq(["Start Things", "End Things"])
+    expect(tasks.map(&:size)).to eq([3, 2])
+  end
 end
