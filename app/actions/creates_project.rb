@@ -12,7 +12,10 @@ class CreatesProject
 
   def convert_string_to_tasks
     tasks = []
-    tasks << Task.new(title: self.task_string, size: 1) if self.task_string != ""
+    task = task_string.split(":")
+    title = task[0]
+    size = task[1] || 1
+    tasks << Task.new(title: title, size: size.to_i) if title
     tasks
   end
 

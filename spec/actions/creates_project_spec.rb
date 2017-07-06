@@ -22,4 +22,12 @@ describe "task string parsing" do
     expect(tasks.map(&:title)).to eq(["Start Things"])
     expect(tasks.map(&:size)).to eq([1])
   end
+
+  it "handles a single string with a size" do
+    creator = CreatesProject.new(name: "Project Runway", task_string: "Start Things:3")
+    tasks = creator.convert_string_to_tasks
+    expect(tasks.size).to eq(1)
+    expect(tasks.map(&:title)).to eq(["Start Things"])
+    expect(tasks.map(&:size)).to eq([3])
+  end
 end
