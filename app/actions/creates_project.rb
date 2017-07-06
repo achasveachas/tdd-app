@@ -10,4 +10,8 @@ class CreatesProject
     self.project = Project.new(name)
   end
 
+  def convert_string_to_tasks
+    tasks = []
+  end
+
 end
