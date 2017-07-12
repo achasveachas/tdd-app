@@ -1,0 +1,18 @@
+<h1>Project List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>Project Name</td>
+      <td>Project Size</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.total_size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
