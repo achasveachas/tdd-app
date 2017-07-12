@@ -7,7 +7,8 @@ describe 'adding projects' do
     fill_in "Tasks", with: "Task 1:3\nTask 2:5"
     click_on("Create Project")
     visit projects_path
-    expect(page).to have_content("Project Runway")
-    expect(page).to have_content("8")
+    @project = Project.find_by(name: "Project Runway")
+    expect(page).to have_selector("#project_#{@project.id} .name", text: @project.name)
+    expect(page).to have_selector("#project_#{@project.id} .total-size", text: @project.total_size)
   end
 end
